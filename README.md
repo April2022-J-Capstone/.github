@@ -2,6 +2,24 @@
 
 ## Front-End Deployment 
 For when stories are completed and deployment to aws is ready to go.
+In either case, a bucket policy should be set so that objects in the bucket are readable by the public.
+
+__BUCKET POLICY__
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::example-frontend/*"
+        }
+    ]
+}
+```
+You will need to replace the ARN to the ARN of the bucket you are uploadin to.
 
 ### React
 Make sure you have a ```.env``` file setup with ```REACT_APP_BACKEND_ADDRESS=CLOUDFRONT_ADDRESS```.
